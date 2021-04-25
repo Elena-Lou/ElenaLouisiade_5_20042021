@@ -2,7 +2,7 @@
     display: grid;
     background-color: #ffff;
     box-shadow: 4px 4px 6px lightgrey;
-    grid-template-rows: 200px 1px 20px;
+    grid-template-rows: 200px 0px 70px;
     max-width: 300px;
     min-width: 200px;
     margin: 16px auto;
@@ -16,4 +16,23 @@
       grid-row: 1/2;
       border-radius: 12px 12px 0px 0px;
     }
+
+   &__text {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+
+     &__title {
+      font-size: 1.3em;
+      margin: 0;
+    }
+
+    &__price {
+      font-weight: bold;
+      margin: 0;
+    }
+
+   }
+
+    
 }

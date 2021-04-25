@@ -12,26 +12,29 @@ fetch('http://localhost:3000/api/furniture')
         console.log(element.price)
         console.log(element.imageUrl)
     
-        let card = document.createElement('div');
-        card.className = 'card';
+        let card = document.createElement("div");
+        card.className = "card";
         card.innerHTML = product.card;
         product.append(card);
         
         let image = document.createElement("img");
         image.className = "card__image";
         image.src = element.imageUrl;
-
-        card.append(image);        
+        card.append(image); 
+        
+        let text = document.createElement("div");
+        text.className = "card__text";
+        card.append(text);
           
-        let name = document.createElement('h5');
-        name.className = 'card__title';
+        let name = document.createElement("h5");
+        name.className = 'card__text__title';
         name.innerHTML = element.name;
-        card.append(name);
+        text.append(name);
 
         let price = document.createElement("p");
-        price.className = "card__price";
-        price.innerHTML = element.price;
-        card.append(price);
+        price.className = "card__text__price";
+        price.innerHTML = (element.price)/100+"€";
+        text.append(price);
 
     });
 });
