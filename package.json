@@ -1,0 +1,12 @@
+{
+  "name": "p5_sass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "sass" : "sass --watch ./sass/main.scss:./style.css"
+
+  },
+  "author": "",
+  "license": "ISC"
+}

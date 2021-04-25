@@ -1,0 +1,10 @@
+// mixin aspect des cartes 
+@mixin card {
+    
+      border-radius: 15px;
+      box-shadow: 4px 4px 6px lightgrey;
+      margin: 10px 10px;
+      height: 70px;
+      display: flex; 
+      align-items: center;    
+}

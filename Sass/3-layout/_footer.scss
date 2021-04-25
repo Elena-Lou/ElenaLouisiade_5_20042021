@@ -1,0 +1,56 @@
+footer { 
+    width: 100%;
+    background-color: $color-primary;
+}
+
+/* séparation pour que background du footer prenne toute la larguer de l'écran mais que le contenu reste centralisé */
+.footer {
+	padding: 20px;
+    color: black;
+    
+    & h3 {
+        color: black;
+        font-weight: normal;
+        margin-bottom: 20px;
+    }
+
+    & a {
+        color: black
+    }
+
+    &__liens {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @media all and (min-width: 700px) {
+            flex-direction: row;
+            
+        }
+
+        &__social {
+        display: flex;
+        width: 20%;
+        justify-content: space-evenly;
+    
+    }
+    &__contact {  
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 70%;
+        @media all and (min-width: 700px) {
+            flex-direction: row;
+            
+        }
+    }
+        
+    }
+
+
+    
+
+    li {
+        margin-bottom: 10px;
+        list-style: none;
+    }
+}
