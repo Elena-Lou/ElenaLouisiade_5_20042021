@@ -2,7 +2,7 @@
     display: grid;
     background-color: #ffff;
     box-shadow: 4px 4px 6px lightgrey;
-    grid-template-rows: 200px 0px 70px;
+    grid-template-rows: 200px 70px;
     max-width: 300px;
     min-width: 200px;
     margin: 16px auto;
@@ -31,8 +31,44 @@
       font-weight: bold;
       margin: 0;
     }
+   }  
+}
+#item {
+  margin: auto;
+  width: 80%;
+}
+.item__card {
+    display: flex;
+    background-color: #ffff;
+    box-shadow: 4px 4px 6px lightgrey;
+    margin: 50px auto;
+    border-radius: 12px;
+    position: relative;
 
-   }
+    &__image { 
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px 12px 0px 0px;
+    }
 
-    
+   &__text {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+
+     &__title {
+      font-size: 1.3em;
+      margin: 0;
+    }
+
+    &__description {
+      font-size: 1em;
+    }
+
+    &__price {
+      font-weight: bold;
+      margin: 0;
+    }
+   }  
 }
