@@ -1,11 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votre Panier - Orinoco</title>
-</head>
-<body>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta description="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="https://kit.fontawesome.com/7798f2e0f1.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" media="all" href="/css/style.css" />
+
+        <title>Votre Panier - Orinoco</title>
+    </head>
+    <body>
+        <div class="bloc_page">
+            <header>                            
+                <img src="images/logo_Orinoco.webp">
+
+                <nav class="topnav" id="myTopnav">
+                    <a href="index.html">Accueil</a>
+                    <a href="cart.html">Votre panier</a>
+                    <a href="javascript:void(0);" class="icon" onclick="toggleNav()"><i class="fa fa-bars"></i></a>
+                </nav> 
+                        
+            </header>
+
+            <section class="cart">
+                <h2>Vos produits</h2>
+
+                <div id="products"></div>
+
+            </section>
+
+            <section class="details">
+                <h2>Vos informations personnelles</h2>
+                <form class="form">
+                    <div class="form__container">
+                        <div>                        
+                            <label for="lastName">Nom :</label>
+                            <input type="text" name="lastname" id="lastName" required/>
+                        </div>             
+                        <div>
+                            <label for="firstName">Prénom :</label>
+                            <input type="text" name="firstname" id="firstName" required/>
+                        </div>             
+                        <div>
+                            <label for="address">Adresse :</label>
+                            <input type="text" name="address" id="address" required/>
+                        </div>               
+
+                        <div>  
+                            <label for="city">Ville :</label>
+                            <input type="text" name="city" id="city" required/>
+                        </div>  
+                        <div>   
+                            <label for="email">Adresse E-mail :</label>
+                            <input type="email" name="email" id="email" required/>
+                        </div> 
+                    </div>
+                    <div class="form__button">
+                        <input type="submit" class="form__btn" value="Confirmer">
+                    </div>
+                </form>
+            </section>
+        </div>
+
+ <footer>
+        <!-- pied de page -->
+        <div class="bloc_page"> <!-- maintien centré du contenu du footer au-delà de 1400px  -->
+            <div class="footer">
+                <img src="images/logo_Orinoco.webp" alt="logo entreprise Orinoco">
+                    <div class="footer__liens">
+                        <ul class="footer__liens__contact">
+                            <li><a href ="#">Mentions légales</a></li>
+                            <li><a href="mailto:contact@orinoco.com">Contact</a></li> <!-- ouverture email pour contacter entreprise-->
+                        </ul>
+                        <ul class="footer__liens__social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+        </footer>
     <script type="text/javascript" src="/JS/cart.js"> </script>
 </body>
 </html>

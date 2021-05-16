@@ -7,18 +7,18 @@
 @font-face {
   font-family: "Roboto-Regular";
   src: url(fonts/Roboto-Regular.ttf);
-  src: local("Roboto-Regular"), url("fonts/Roboto-Regular.ttf") format("truetype");
+  src: local("Roboto-Regular"), url("/fonts/Roboto-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "Roboto-Bold";
   src: url(fonts/Roboto-Bold.ttf);
-  src: local("Roboto-Bold"), url("fonts/Roboto-Bold.ttf") format("truetype");
+  src: local("Roboto-Bold"), url("/fonts/Roboto-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 @font-face {
   font-family: "Roboto-Thin";
   src: url(fonts/Roboto-Thin.ttf);
-  src: local("Roboto-Thin"), url("fonts/Roboto-Thin.ttf") format("truetype");
+  src: local("Roboto-Thin"), url("/fonts/Roboto-Thin.ttf") format("truetype");
 }
 html {
   font-family: "Roboto-Regular", Arial, Helvetica, sans-serif;
@@ -187,22 +187,36 @@ header {
 
 .item__card {
   display: flex;
+  flex-direction: column;
   background-color: #ffff;
   box-shadow: 4px 4px 6px lightgrey;
   margin: 50px auto;
   border-radius: 12px;
   position: relative;
 }
+@media all and (min-width: 600px) {
+  .item__card {
+    flex-direction: row;
+  }
+}
 .item__card__image {
-  width: 50%;
+  width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 12px 12px 0px 0px;
+}
+@media all and (min-width: 600px) {
+  .item__card__image {
+    width: 50%;
+    height: 100%;
+    border-radius: 12px 0 0 12px;
+  }
 }
 .item__card__text {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  padding-left: 15px;
 }
 .item__card__title {
   font-size: 1.5em;
@@ -215,11 +229,58 @@ header {
 .item__card__price {
   font-weight: bold;
   margin: 0;
+  align-self: center;
+  padding: 20px;
+}
+.item__card__cart {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-around;
+  width: 50%;
+  height: 70px;
+}
+
+#products {
+  display: flex;
+  flex-direction: column;
+}
+
+.product__container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .fab {
   width: 30px;
   height: 30px;
+}
+
+.form__btn, .item__card__button {
+  font-size: 1.1em;
+  width: 200px;
+  background-color: #F3E9F1;
+  border: none;
+  box-shadow: 3px 3px 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+}
+.form__container {
+  height: 200px;
+  justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+.form__button {
+  margin: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
