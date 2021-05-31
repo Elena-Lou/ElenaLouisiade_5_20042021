@@ -14,19 +14,15 @@ const cart = localStorage.getItem("cart");
 const contact = localStorage.getItem("contact");
 const orderId = localStorage.getItem("orderId");
 const total = localStorage.getItem("total");
-console.log();
+console.log(contact);
+
 if(orderId == null){
     window.location.href = "index.html"
 } else {
     let customer = document.createElement("p");
     customer.className = "confirmation__name"
-    customer.innerHTML = "Merci " + contact.firstName + contact.lastName + " pour votre commande.";
+    customer.innerHTML = "Merci " + contact.firstName + " " + contact.lastName + " pour votre commande " + orderId;
     confirmation.append(customer);
-
-    let orderNumber = document.createElement("p");
-    orderNumber.className = "confirmation__number";
-    orderNumber.innerHTML = "Elle porte le n°" + orderId;
-    confirmation.append(orderNumber);
 
     let orderTotal = document.createElement("p");
     orderTotal.className = "confirmation__total";

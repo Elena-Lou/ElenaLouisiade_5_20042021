@@ -152,6 +152,12 @@ header {
   justify-content: flex-end;
 }
 
+#confirmation {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
 .card {
   display: grid;
   background-color: #ffff;
