@@ -90,8 +90,11 @@
       flex-direction: column;
       align-self: center;
       justify-content: space-around;
-      width: 50%;
       height: 70px;
+    }
+
+    &__button {
+      margin: auto;
     }
 }
 

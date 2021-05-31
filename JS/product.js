@@ -61,21 +61,27 @@ fetch("http://localhost:3000/api/furniture/" + id)
       let itemVarnish = document.createElement("select");
       itemVarnish.className = "item__card__varnish";
       cartConfirmation.append(itemVarnish);
-      data.varnish.forEach(()=> {
+
+      for (v of data.varnish){
+        console.log(v);
         let itemVarnishOption = document.createElement("option");
-        itemVarnishOption.innerHTML = data.varnish;
+        itemVarnishOption.innerHTML = v;
         itemVarnish.append(itemVarnishOption);
-      })
+      }
+      
 
       let addToCart = document.createElement("button");
       addToCart.className = "item__card__button";
       addToCart.innerHTML = "Ajouter au panier";
+
       addToCart.addEventListener("click", function (event) {
+        event.preventDefault();
         console.log("panier")
         let storage = JSON.parse(localStorage.getItem("cart"));
         if (storage == null) {
           storage = [];
         }
+              
         storage.push(data);
         localStorage.setItem("cart", JSON.stringify(storage));
       });
