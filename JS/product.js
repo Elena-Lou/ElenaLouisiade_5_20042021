@@ -17,7 +17,7 @@ console.info(id);
 const item = document.getElementById("item");
 
 if(id == null || typeof id == 'undefined'){
-  alert('Le produit demandé n\'existe pas')
+  alert('Le produit demandé n\'existe pas');
 } else {
 fetch("http://localhost:3000/api/furniture/" + id)
   .then(function (response) {
@@ -80,11 +80,14 @@ fetch("http://localhost:3000/api/furniture/" + id)
         let storage = JSON.parse(localStorage.getItem("cart"));
         if (storage == null) {
           storage = [];
+          console.log("panier créé");
         }
               
         storage.push(data);
         localStorage.setItem("cart", JSON.stringify(storage));
+        console.log("produit ajouté");
+        
       });
-      cartConfirmation.append(addToCart);
+      cartConfirmation.append(addToCart);    
     })};
  

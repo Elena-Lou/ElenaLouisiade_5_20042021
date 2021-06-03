@@ -103,9 +103,10 @@ function postOrder(dataToSend) {
     })
     .then(function (confirmationId) {
       localStorage.setItem("orderId", confirmationId.orderId);
-      localStorage.setItem("contact", confirmationId.contact);
+      localStorage.setItem("contact", JSON.stringify(confirmationId.contact));
       console.log(confirmationId.orderId);
       console.log(confirmationId.contact);
       window.location.href = "confirmation.html";
     });
+    
 }

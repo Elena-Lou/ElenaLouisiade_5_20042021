@@ -11,33 +11,33 @@ function toggleNav() {
 const confirmation = document.getElementById("confirmation");
 
 const cart = localStorage.getItem("cart");
-const contact = localStorage.getItem("contact");
+const contact = JSON.parse(localStorage.getItem("contact"));
 const orderId = localStorage.getItem("orderId");
 const total = localStorage.getItem("total");
 console.log(contact);
 
 if(orderId == null){
-    window.location.href = "index.html"
+    window.location.href = "index.html";
 } else {
-    let customer = document.createElement("p");
-    customer.className = "confirmation__name"
-    customer.innerHTML = "Merci " + contact.firstName + " " + contact.lastName + " pour votre commande " + orderId;
+    let customer = document.createElement("div");
+    customer.className = "confirmation__name";
+    customer.innerHTML += `<p>Merci <strong>${contact.firstName} ${contact.lastName}</strong> pour votre commande</br><strong>${orderId}</strong></p>`;
     confirmation.append(customer);
 
-    let orderTotal = document.createElement("p");
+    let orderTotal = document.createElement("div");
     orderTotal.className = "confirmation__total";
-    orderTotal.innerHTML = "Le montant total est de " + total +"€"
+    orderTotal.innerHTML += `<p>Le montant total est de <strong>${total}</strong>€`;
     confirmation.append(orderTotal);
 
-    let orderEmail = document.createElement("p");
+    let orderEmail = document.createElement("div");
     orderEmail.className = "confirmation__email";
-    orderEmail.innerHTML = "Un email de confirmation vous a été envoyé à l'adresse : " + contact.email;
+    orderEmail.innerHTML += `<p>Un email de confirmation vous a été envoyé à l'adresse : <strong>${contact.email}</strong></p>`;
     confirmation.append(orderEmail);
 
     
 }
 
-// setTimeout(function () {
-//   localStorage.clear();
-//   window.location.href = "index.html"
-// }, 3000);
+setTimeout(function () {
+  localStorage.clear();
+  window.location.href = "index.html";
+}, 3000);
