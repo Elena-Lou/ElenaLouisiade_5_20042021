@@ -69,10 +69,10 @@ fetch("http://localhost:3000/api/furniture/" + id)
         itemVarnish.append(itemVarnishOption);
       }
       
-
       let addToCart = document.createElement("button");
       addToCart.className = "item__card__button";
       addToCart.innerHTML = "Ajouter au panier";
+      cartConfirmation.append(addToCart)
 
       addToCart.addEventListener("click", function (event) {
         event.preventDefault();

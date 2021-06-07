@@ -1,19 +1,30 @@
 .form {
     display: flex;
     flex-direction: column;
-    height: 250px;
+    height: 300px;
 
     &__container {
-        height: 200px;
+        height: 250px;
         justify-content: space-evenly;
         display: flex;
         flex-wrap: wrap;
         align-content: space-around;
-
     }
+    & input {
+        border-radius: 10px;
+        outline: none;
+        font-size: 1.1em;
+        transition: background-color 500ms;
+            &:focus {
+                border: 2px solid;
+            }
+            &:not(:focus):invalid {
+                border: 2px solid red;
+                color: red;
+            }
+        }
 
     &__button {
-        margin: 30px auto;
-        
+        margin: 30px auto;  
     }
 }

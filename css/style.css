@@ -253,7 +253,7 @@ header {
   flex-direction: column;
   align-self: center;
   justify-content: space-around;
-  height: 70px;
+  height: 90px;
 }
 .item__card__button {
   margin: auto;
@@ -285,20 +285,38 @@ header {
   box-shadow: 3px 3px 5px grey;
   padding: 10px;
   margin: 10px;
-  border-radius: 25px;
+  border-radius: 10px;
+  transform: scale(1);
+  transition: transform 400ms;
+}
+.form__btn:hover, .item__card__button:hover {
+  transform: scale(1.15);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  height: 250px;
+  height: 300px;
 }
 .form__container {
-  height: 200px;
+  height: 250px;
   justify-content: space-evenly;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
+}
+.form input {
+  border-radius: 10px;
+  outline: none;
+  font-size: 1.1em;
+  transition: background-color 500ms;
+}
+.form input:focus {
+  border: 2px solid;
+}
+.form input:not(:focus):invalid {
+  border: 2px solid red;
+  color: red;
 }
 .form__button {
   margin: 30px auto;

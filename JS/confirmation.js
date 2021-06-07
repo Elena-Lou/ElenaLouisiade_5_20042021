@@ -40,4 +40,4 @@ if(orderId == null){
 setTimeout(function () {
   localStorage.clear();
   window.location.href = "index.html";
-}, 3000);
+}, 4000);
