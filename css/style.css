@@ -292,6 +292,9 @@ header {
 .form__btn:hover, .item__card__button:hover {
   transform: scale(1.15);
 }
+.form__btn:active, .item__card__button:active {
+  box-shadow: 3px 3px 5px grey inset;
+}
 
 .form {
   display: flex;

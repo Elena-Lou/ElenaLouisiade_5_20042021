@@ -1,4 +1,4 @@
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+//NAV RESPONSIVE
 function toggleNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -8,6 +8,7 @@ function toggleNav() {
   }
 }
 
+//AFFICHAGE CONFIRMATION COMMANDE DEPUIS DONNEES LOCALSTORAGE
 const confirmation = document.getElementById("confirmation");
 
 const cart = localStorage.getItem("cart");
@@ -32,12 +33,11 @@ if(orderId == null){
     let orderEmail = document.createElement("div");
     orderEmail.className = "confirmation__email";
     orderEmail.innerHTML += `<p>Un email de confirmation vous a été envoyé à l'adresse : <strong>${contact.email}</strong></p>`;
-    confirmation.append(orderEmail);
-
-    
+    confirmation.append(orderEmail);    
 }
 
+// VIDAGE LOCALSTORAGE ET REDIRECTION PAGE INDEX.HTML
 setTimeout(function () {
   localStorage.clear();
   window.location.href = "index.html";
-}, 4000);
+}, 7000);

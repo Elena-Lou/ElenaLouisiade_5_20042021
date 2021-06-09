@@ -1,4 +1,4 @@
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+//NAV RESPONSIVE
 function toggleNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -7,34 +7,45 @@ function toggleNav() {
     x.className = "topnav";
   }
 }
-
+//AFFICHAGE DU PANIER
 const products = document.getElementById("products");
 
 const storage = JSON.parse(localStorage.getItem("cart"));
+
 let total = 0;
-storage.forEach((data) => {
-  let productContainer = document.createElement("div");
-  productContainer.className = "product__container";
-  products.append(productContainer);
 
-  let product = document.createElement("p");
-  product.innerHTML = data.name;
-  product.className = "product__name";
-  productContainer.append(product);
-  console.log(data.name);
+if (storage == null){
+  let emptyCart = document.createElement("p");
+  emptyCart.innerHTML = "Votre panier est vide";
+  products.append(emptyCart)
+} else {
+  storage.forEach((data) => {
 
-  let productPrice = document.createElement("p");
-  productPrice.innerHTML = data.price / 100 + ".00€";
-  total += data.price / 100;
-  productPrice.className = "product__price";
-  productContainer.append(productPrice);
-});
+    let productContainer = document.createElement("div");
+    productContainer.className = "product__container";
+    products.append(productContainer);
+  
+    let product = document.createElement("p");
+    product.innerHTML = data.name;
+    product.className = "product__name";
+    productContainer.append(product);
+    console.log(data.name);
+  
+    let productPrice = document.createElement("p");
+    productPrice.innerHTML = data.price / 100 + ".00€";
+    total += data.price / 100;
+    productPrice.className = "product__price";
+    productContainer.append(productPrice);
+  });
 
-let totalPrice = document.createElement("p");
-totalPrice.setAttribute("id", "total__price");
-totalPrice.innerHTML = "Prix total : " + total + ".00€";
-localStorage.setItem("total", total);
-products.append(totalPrice);
+  //CALCUL DU PRIX TOTAL
+  let totalPrice = document.createElement("p");
+  totalPrice.setAttribute("id", "total__price");
+  totalPrice.innerHTML = "Prix total : " + total + ".00€";
+  localStorage.setItem("total", total);
+  products.append(totalPrice);
+}
+
 
 const contact = {};
 class contactData {
@@ -47,12 +58,16 @@ class contactData {
   }
 }
 
+//VALIDATION DU FORMULAIRE DE CONTACT
 const regexGlobal =
   /^[a-z ,.'-àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/i;
+
 const regexAddress =
   /^[a-z0-9 ,.'-àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/i;
+
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+//PASSAGE DE LA COMMANDE 
 function order(e) {
   e.preventDefault();
   let lastname = document.getElementById("lastName").value;
@@ -60,11 +75,13 @@ function order(e) {
   let address = document.getElementById("address").value;
   let city = document.getElementById("city").value;
   let email = document.getElementById("email").value;
+
   console.log(regexGlobal.test(lastname));
   console.log(regexGlobal.test(firstname));
   console.log(regexAddress.test(address));
   console.log(regexGlobal.test(city));
   console.log(regexEmail.test(email));
+
   if (
     regexGlobal.test(lastname) &&
     regexGlobal.test(firstname) &&
@@ -78,29 +95,34 @@ function order(e) {
     storage.forEach((prod) => {
       products.push(prod._id);
     });
+
     let data = {
       contact: contact,
       products: products,
     };
+
     console.log(data);
+    
     let dataToSend = JSON.stringify(data);
     localStorage.setItem("data", dataToSend);
     postOrder(dataToSend);
-    alert("OK");
     return true;
   }
   alert("Veuillez saisir tous les champs");
 }
 
+//APPEL API POST
 function postOrder(dataToSend) {
   fetch("http://localhost:3000/api/furniture/order", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: dataToSend,
   })
+
     .then(function (orderNumber) {
       return orderNumber.json();
     })
+
     .then(function (confirmationId) {
       localStorage.setItem("orderId", confirmationId.orderId);
       localStorage.setItem("contact", JSON.stringify(confirmationId.contact));
@@ -108,5 +130,4 @@ function postOrder(dataToSend) {
       console.log(confirmationId.contact);
       window.location.href = "confirmation.html";
     });
-    
 }

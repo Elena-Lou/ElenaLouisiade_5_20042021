@@ -1,4 +1,4 @@
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+//NAV RESPONSIVE
 function toggleNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -12,20 +12,23 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 const id = urlParams.get("id");
-console.info(id);
+console.log(id);
 
 const item = document.getElementById("item");
 
+// RECUPERATION DES DONNEES DU PRODUIT SELECTIONNE DEPUIS L'API
 if(id == null || typeof id == 'undefined'){
-  alert('Le produit demandé n\'existe pas');
+    window.location.href = "index.html";
+    alert('Le produit demandé n\'existe pas');
 } else {
-fetch("http://localhost:3000/api/furniture/" + id)
+  fetch("http://localhost:3000/api/furniture/" + id)
+
   .then(function (response) {
     return response.json();
   })
-  .then(function (data) {
-      console.log(data);
 
+  .then(function (data) {
+    
       let itemCard = document.createElement("article");
       itemCard.className = "item__card";
       item.append(itemCard);
@@ -63,7 +66,6 @@ fetch("http://localhost:3000/api/furniture/" + id)
       cartConfirmation.append(itemVarnish);
 
       for (v of data.varnish){
-        console.log(v);
         let itemVarnishOption = document.createElement("option");
         itemVarnishOption.innerHTML = v;
         itemVarnish.append(itemVarnishOption);
@@ -74,15 +76,15 @@ fetch("http://localhost:3000/api/furniture/" + id)
       addToCart.innerHTML = "Ajouter au panier";
       cartConfirmation.append(addToCart)
 
+// AJOUT AU PANIER 
       addToCart.addEventListener("click", function (event) {
         event.preventDefault();
-        console.log("panier")
         let storage = JSON.parse(localStorage.getItem("cart"));
         if (storage == null) {
           storage = [];
           console.log("panier créé");
         }
-              
+
         storage.push(data);
         localStorage.setItem("cart", JSON.stringify(storage));
         console.log("produit ajouté");

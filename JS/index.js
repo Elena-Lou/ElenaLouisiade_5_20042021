@@ -1,11 +1,27 @@
+//NAV RESPONSIVE
+function toggleNav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
 const product = document.getElementById("product");
 
+//RECUPERATION DES DONNEES DES PRODUITS DE L'API
 fetch("http://localhost:3000/api/furniture")
+
   .then(function (response) {
     return response.json();
   })
+
+  //CREATION DES <ARTICLES> POUR CHAQUE PRODUIT ENVOYES PAR API 
   .then(function (data) {
+
     console.log(data);
+    
     data.forEach((element) => {
       console.log(element.name);
       console.log(element.price);
@@ -39,13 +55,3 @@ fetch("http://localhost:3000/api/furniture")
       text.append(price);
     });
   });
-
-  /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-function toggleNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}

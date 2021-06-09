@@ -17,5 +17,8 @@
     &:hover {
         transform: scale(1.15);
     }
+    &:active {
+        box-shadow: 3px 3px 5px grey inset;
+    }
 
 }
